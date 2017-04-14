@@ -11,3 +11,12 @@ def send_feedback_email_task(email, message):
     """sends an email when feedback form is filled successfully"""
     logger.info("Sent feedback email")
     return send_feedback_email(email, message)
+
+from django.core import mail
+
+@task(name="mail_admins")
+def mail_admins(subject, message, fail_silently=False, connection=None,
+                html_message=None):
+    '''
+    '''
+    mail.mail_admins(subject, message, fail_silently, connection, html_message)

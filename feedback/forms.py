@@ -1,5 +1,5 @@
 from django import forms
-from feedback.tasks import send_feedback_email_task
+from feedback.tasks import send_feedback_email_task, mail_admins
 
 
 class FeedbackForm(forms.Form):
@@ -13,5 +13,9 @@ class FeedbackForm(forms.Form):
         # filled in; not super complicated/effective but it works
         if self.cleaned_data['honeypot']:
             return False
-        send_feedback_email_task.delay(
-            self.cleaned_data['email'], self.cleaned_data['message'])
+        subject = "feedback mail"
+        message = self.cleaned_data['message']
+        # send_feedback_email_task.delay(
+        #     self.cleaned_data['email'], self.cleaned_data['message'])
+        mail_admins.delay(subject, message, fail_silently=True,
+                         connection=None)
