@@ -110,6 +110,6 @@ STATICFILES_DIRS = (
 )
 STATIC_ROOT = '/static/'
 STATIC_URL = '/static/'
-
 from celeryconfig import *
 from config_mail import *
+from settings_log import *

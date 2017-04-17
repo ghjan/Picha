@@ -13,6 +13,7 @@ EMAIL_HOST_USER = 'system@fuwo.com'
 EMAIL_HOST_PASSWORD = 'REyWf@eru2'
 EMAIL_USER_TLS = False
 DEFAULT_CHARSET = 'utf-8'
+DEFAULT_FROM_EMAIL = SERVER_EMAIL
 
 # Public server config
 PUBLIC_SERVER_EMAIL = 'noreply@fuwo.com'
